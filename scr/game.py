@@ -159,7 +159,7 @@ class TelaJogo(Tela):
             if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
                 self.flappy.pular()
                 PULO.play()
-            elif e.type == pygame.KEYDOWN and e.key == pygame.K_a:
+            elif e.type == pygame.KEYDOWN and e.key == pygame.K_m:
                 self.manager.go_to(MenuPrincipal(self.manager))
 
 
@@ -174,6 +174,11 @@ class TelaJogo(Tela):
 
         self.jogador_grupo.update()
 
+        if self.flappy.rect.bottom >= 612 or self.flappy.rect.bottom <= -75:
+            self.manager.pontuacao = self.pontuacao
+            MORTE.play()
+            self.manager.go_to(TelaMorte (self.manager))
+
         tempo_atual = pygame.time.get_ticks()
         if tempo_atual - self.tempo_ultimo_cano > self.delay_entre_pipes:
             self.tempo_ultimo_cano = tempo_atual
@@ -187,13 +192,14 @@ class TelaJogo(Tela):
                 cano.ponto_contado = True
                 self.pontuacao += 1
                 PONTO.play()
-                print("PONTOS:", self.pontuacao) #debugging
+                #print("PONTOS:", self.pontuacao) #debugging
 
         for cano in self.canos:
             if self.flappy.rect.colliderect(cano.top_rect) or self.flappy.rect.colliderect(cano.bottom_rect):
                 self.manager.pontuacao = self.pontuacao
                 MORTE.play()
                 self.manager.go_to(TelaMorte(self.manager))
+
 
     def draw(self, superficie):
         superficie.blit(self.FUNDODIA, (self.mov_fundo, 0))
