@@ -22,23 +22,16 @@ FONT = pygame.font.Font(FON +"2.ttf", 25)
 # Inicialização do som do jogo
 pygame.mixer.init()
 PONTO = pygame.mixer.Sound(SOU + 'point.wav')
+PONTO.set_volume(0.3)
 MORTE = pygame.mixer.Sound(SOU + 'hit.wav')
+MORTE.set_volume(0.3)
 PULO = pygame.mixer.Sound(SOU + 'wing.wav')
+PULO.set_volume(0.3)
 PLAY = pygame.mixer.Sound(SOU + 'swoosh.wav')
+PLAY.set_volume(0.3)
 
 # Dict para imagens dos números
-NUM_IMAGES = {
-    "0": pygame.image.load(IMG + '0.png'),
-    "1": pygame.image.load(IMG + '1.png'),
-    "2": pygame.image.load(IMG + '2.png'),
-    "3": pygame.image.load(IMG + '3.png'),
-    "4": pygame.image.load(IMG + '4.png'),
-    "5": pygame.image.load(IMG + '5.png'),
-    "6": pygame.image.load(IMG + '6.png'),
-    "7": pygame.image.load(IMG + '7.png'),
-    "8": pygame.image.load(IMG + '8.png'),
-    "9": pygame.image.load(IMG + '9.png'),
-}
+NUM_IMAGES = {str(i): pygame.image.load(IMG + f'{i}.png') for i in range(10)}
 
 MSG_TUTORIAL = {
     1: "pule com espaco",
@@ -77,6 +70,15 @@ class Tela:
     def draw(self, superficie): pass
 
 class TelaMorte(Tela):
+    def __init__(self, manager):
+        super().__init__(manager)
+        self.FUNDONOITE = pygame.image.load(IMG + 'background-night.png')
+        self.logo = pygame.image.load(IMG + 'gameover.png')
+        self.logo = pygame.transform.scale(self.logo, (368, 94))
+        self.logo_rect = self.logo.get_rect()
+        self.logo_rect.centerx = WID // 2
+        self.logo_rect.y = 100
+
     def handle_events(self, events):
         for e in events:
             if e.type == pygame.KEYDOWN:
@@ -86,16 +88,8 @@ class TelaMorte(Tela):
                     self.manager.go_to(TelaJogo(self.manager))
 
     def draw(self, superficie):
-        self.FUNDONOITE = pygame.image.load(IMG + 'background-night.png')
         superficie.blit(self.FUNDONOITE, (0, 0))
-
-        old = pygame.image.load(IMG + 'gameover.png')
-        logo = pygame.transform.scale(old, (368, 94))
-        logo_rect = logo.get_rect()
-        logo_rect.centerx = WID // 2
-        logo_rect.y = 100
-        superficie.blit(logo, logo_rect)
-
+        superficie.blit(self.logo, self.logo_rect)
         CentVariosTextos(superficie, MSG_TELA_MORTE, [1, 2], FONT)
 
 class TelaTutorial(Tela):
@@ -163,7 +157,6 @@ class TelaJogo(Tela):
         for e in events:
             if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
                 self.flappy.pular()
-                PULO.set_volume(0.3)
                 PULO.play()
             elif e.type == pygame.KEYDOWN and e.key == pygame.K_a:
                 self.manager.go_to(MenuPrincipal(self.manager))
@@ -192,14 +185,12 @@ class TelaJogo(Tela):
             if not cano.ponto_contado and cano.top_rect.right < self.flappy.rect.left:
                 cano.ponto_contado = True
                 self.pontuacao += 1
-                PONTO.set_volume(0.3)
                 PONTO.play()
                 print("PONTOS:", self.pontuacao) #debugging
 
         for cano in self.canos:
             if self.flappy.rect.colliderect(cano.top_rect) or self.flappy.rect.colliderect(cano.bottom_rect):
                 self.manager.pontuacao = self.pontuacao
-                MORTE.set_volume(0.3)
                 MORTE.play()
                 self.manager.go_to(TelaMorte(self.manager))
 
