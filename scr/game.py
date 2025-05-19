@@ -106,6 +106,15 @@ class TelaTutorial(Tela):
         CentVariosTextos(superficie, MSG_TUTORIAL, [1, 2, 3, 4, 5], FONT, espaco=30)
 
 class MenuPrincipal(Tela):
+    def __init__(self, manager):
+        super().__init__(manager)
+        self.FUNDOMENU = pygame.image.load(IMG + 'background-day.png')
+        self.logo = pygame.image.load(IMG + 'logo.png')
+        self.logo = pygame.transform.scale(self.logo, (368, 94))
+        self.logo_rect = self.logo.get_rect()
+        self.logo_rect.centerx = WID // 2
+        self.logo_rect.y = 100
+
     def handle_events(self, events):
         for e in events:
             if e.type == pygame.KEYDOWN:
@@ -116,16 +125,8 @@ class MenuPrincipal(Tela):
                     self.manager.go_to(TelaTutorial(self.manager))
 
     def draw(self, superficie):
-        self.FUNDOMENU = pygame.image.load(IMG + 'background-day.png')
         superficie.blit(self.FUNDOMENU, (0, 0))
-
-        old = pygame.image.load(IMG + 'logo.png')
-        logo = pygame.transform.scale(old, (368, 94))
-        logo_rect = logo.get_rect()
-        logo_rect.centerx = WID // 2
-        logo_rect.y = 100
-        superficie.blit(logo, logo_rect)
-
+        superficie.blit(self.logo, self.logo_rect)
         CentVariosTextos(superficie, MSG_MENU_PRINCIPAL, [1, 3], FONT, espaco=30)
 
 # O jogo funciona dentro desta tela em específico
