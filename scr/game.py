@@ -321,8 +321,19 @@ class Canos(pygame.sprite.Sprite):
             self.kill()
 
     def draw(self, surface):
-        surface.blit(self.image_cano_top, self.top_rect)
-        surface.blit(self.image_cano, self.bottom_rect)
+        top_x = self.top_rect.x
+        y = self.top_rect.bottom
+        while y > 0:
+            rect = self.image_cano_top.get_rect(midbottom=(top_x + self.top_rect.width // 2, y))
+            surface.blit(self.image_cano_top, rect)
+            y -= self.image_cano_top.get_height()
+
+        bottom_x = self.bottom_rect.x
+        y = self.bottom_rect.top
+        while y < 612:
+            rect = self.image_cano.get_rect(midtop=(bottom_x + self.bottom_rect.width // 2, y))
+            surface.blit(self.image_cano, rect)
+            y += self.image_cano.get_height()
 
 # ---------------------------------------------------------------------------------
 
