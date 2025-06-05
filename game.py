@@ -16,9 +16,9 @@ CLOCK = pygame.time.Clock()
 FPS = 60
 
 # Localização dos assets do jogo
-IMG = '../FlappyBird/FlappyBird/assets/images/'
-SOU = '../FlappyBird/FlappyBird/assets/sounds/'
-FON = '../FlappyBird/FlappyBird/assets/fonts/'
+IMG = '../FlappyBird/assets/images/'
+SOU = '../FlappyBird/assets/sounds/'
+FON = '../FlappyBird/assets/fonts/'
 # https://www.fontspace.com/category/flappy-bird
 FONT = pygame.font.Font(FON +"2.ttf", 25)
 
