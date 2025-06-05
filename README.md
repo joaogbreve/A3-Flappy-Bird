@@ -2,10 +2,6 @@
 
 Este projeto é uma recriação do clássico jogo Flappy Bird, desenvolvido em Python utilizando a biblioteca Pygame. O objetivo é simples: controle o pássaro, desvie dos canos e faça a maior pontuação possível!
 
-## Demonstração
-
-![Flappy Bird Screenshot](assets/images/logo.png)
-
 ## Como jogar
 - **Barra de espaço:** Pular
 - **P:** Iniciar o jogo
