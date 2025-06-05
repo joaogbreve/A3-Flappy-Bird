@@ -23,14 +23,15 @@ Este projeto é uma recriação do clássico jogo Flappy Bird, desenvolvido em P
    ```pwsh
    python game.py
    ```
+   Ou com o executável.
 
 ## Estrutura do Projeto
 ```
 FlappyBird/
   assets/           # Imagens, sons e fontes do jogo
   game.py           # Código principal do jogo
+  FlappyBird.exe    # Executável
   requirements.txt  # Dependências Python
-  game.spec         # Configuração para gerar executável (PyInstaller)
 ```
 
 ## Créditos
