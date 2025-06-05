@@ -1,60 +1,45 @@
-# FlappyBird - Jogo feito em Python com Pygame
+# Flappy Bird (Python + Pygame)
 
-FlappyBird é uma recriação do clássico jogo Flappy Bird feito utilizando a biblioteca Pygame. O jogo consiste em um pássaro que deve desviar de obstáculos e passar por tubos. O projeto também inclui um menu interativo com botões para "Começar", "Tutorial/Manual" e "Sair".
+Este projeto é uma recriação do clássico jogo Flappy Bird, desenvolvido em Python utilizando a biblioteca Pygame. O objetivo é simples: controle o pássaro, desvie dos canos e faça a maior pontuação possível!
 
-## Funcionalidades
+## Demonstração
 
-- **Menu Inicial**: Com botões para começar o jogo, ver o tutorial/manual e sair.
-- **Jogo**: Jogo de Flappy Bird com física realista de pulo e colisão.
-- **Tutorial/Manual**: Explicações sobre como jogar.
-- **Botões interativos**: Os botões no menu mudam de cor quando o mouse passa por cima e respondem ao clique.
+![Flappy Bird Screenshot](assets/images/logo.png)
 
-## Estrutura de Pastas
+## Como jogar
+- **Barra de espaço:** Pular
+- **P:** Iniciar o jogo
+- **T:** Abrir o tutorial
+- **M:** Voltar ao menu principal
+- **R:** Reiniciar após perder
 
-/FlappyBird
-├── assets
-│ ├── fonts
-│ ├── images
-│ └── sounds
-├── scr # Código-fonte do jogo
-├── .gitignore # Arquivo para ignorar arquivos temporários e pastas
-├── README.md # Documento explicativo do projeto
-├── requirements.txt # Dependências do projeto
+## Requisitos
+- Python 3.7+
+- Pygame 2.6.1
 
 ## Instalação
+1. Clone este repositório ou baixe os arquivos.
+2. Instale as dependências:
+   ```pwsh
+   pip install -r requirements.txt
+   ```
+3. Execute o jogo:
+   ```pwsh
+   python game.py
+   ```
 
-1. Clone o repositório:
-    ```bash
-    git clone https://github.com/seu-usuario/FlappyBird.git
-    ```
-2. Crie e ative um ambiente virtual:
-    ```bash
-    python -m venv venv
-    .\venv\Scripts\Activate.ps1  # No Windows
-    source venv/bin/activate     # No Linux/Mac
-    ```
-3. Instale as dependências:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Execute o jogo:
-    ```bash
-    python main.py
-    ```
-
-## Contribuindo
-
-1. Faça um fork do repositório
-2. Crie uma nova branch (`git checkout -b feature/nova-feature`)
-3. Faça suas modificações e commit (`git commit -am 'Adicionando nova feature'`)
-4. Envie para o repositório remoto (`git push origin feature/nova-feature`)
-5. Abra um pull request
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+## Estrutura do Projeto
+```
+FlappyBird/
+  assets/           # Imagens, sons e fontes do jogo
+  game.py           # Código principal do jogo
+  requirements.txt  # Dependências Python
+  game.spec         # Configuração para gerar executável (PyInstaller)
+```
 
 ## Créditos
+- Sons e imagens inspirados no Flappy Bird original.
+- Fonte disponível em [fontspace.com/category/flappy-bird](https://www.fontspace.com/category/flappy-bird)
 
-Asset: https://github.com/samuelcust/flappy-bird-assets
+## Licença
+Este projeto é apenas para fins educacionais e não possui fins comerciais.
