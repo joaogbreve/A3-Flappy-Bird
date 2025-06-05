@@ -16,9 +16,9 @@ CLOCK = pygame.time.Clock()
 FPS = 60
 
 # Localização dos assets do jogo
-IMG = '../assets/images/'
-SOU = '../assets/sounds/'
-FON = '../assets/fonts/'
+IMG = '../FlappyBird/FlappyBird/assets/images/'
+SOU = '../FlappyBird/FlappyBird/assets/sounds/'
+FON = '../FlappyBird/FlappyBird/assets/fonts/'
 # https://www.fontspace.com/category/flappy-bird
 FONT = pygame.font.Font(FON +"2.ttf", 25)
 
@@ -38,10 +38,10 @@ NUM_IMAGES = {str(i): pygame.image.load(IMG + f'{i}.png') for i in range(10)}
 
 MSG_TUTORIAL = {
     1: "pule com a barra de espaco",
-    2: "evite os tubos",
-    3: "sobreviva o quanto conseguir",
-    4: "aperte m para voltar ao menu",
-    5: "aperte p para iniciar o jogo",
+    2: "para pontuar passe pelos canos",
+    3: "sobreviva o maior tempo possivel",
+    4: "m para voltar ao menu",
+    5: "p para iniciar o jogo",
 }
 
 MSG_MENU_PRINCIPAL = {
